@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rakhi Digital Gift Card</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;background:linear-gradient(135deg,#fff8f2,#f9ead5);
+       font-family:Arial,Helvetica,sans-serif;display:flex;align-items:center;justify-content:center;padding:18px;color:#241b18}
+  .card{width:min(94vw,520px);background:#fffdfb;border:3px solid #d8a43a;border-radius:28px;
+         box-shadow:0 18px 55px rgba(70,30,20,.18);overflow:hidden}
+  .hero{background:linear-gradient(135deg,#7e1230,#a51f3d);color:#fff;padding:38px 24px 46px;text-align:center;position:relative}
+  .hero:before,.hero:after{content:"✦";position:absolute;color:#f2d36f;font-size:30px;top:24px}
+  .hero:before{left:28px} .hero:after{right:28px}
+  .small{letter-spacing:5px;font-size:13px;font-weight:700;color:#f6df9a}
+  h1{margin:10px 0 4px;font-size:58px;letter-spacing:2px;color:#f3d47a}
+  .tag{font-size:14px;letter-spacing:2px;color:#fff3d8}
+  .rakhi{margin:24px auto 0;width:92px;height:92px;border-radius:50%;
+          border:8px solid #f3d47a;background:#8f1732;display:flex;align-items:center;justify-content:center;
+          font-size:34px;box-shadow:0 0 0 8px rgba(243,212,122,.18)}
+  .content{padding:30px 24px 34px;text-align:center}
+  .for{font-size:26px;font-weight:800;color:#8f1732;margin-bottom:8px}
+  .msg{font-size:20px;font-weight:700;margin-bottom:24px}
+  .reveal-btn{width:100%;border:0;border-radius:18px;padding:20px 18px;background:#8f1732;color:white;
+               font-size:20px;font-weight:800;cursor:pointer;box-shadow:0 9px 20px rgba(143,23,50,.22)}
+  .reveal-btn:active{transform:scale(.985)}
+  .hint{font-size:13px;color:#786b65;margin:12px 0 0}
+  .details{display:none;margin-top:20px;background:#fff6e7;border:2px dashed #d8a43a;border-radius:18px;padding:20px;text-align:left}
+  .details.show{display:block;animation:pop .22s ease-out}
+  @keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .row{margin:12px 0}
+  .label{font-size:12px;text-transform:uppercase;letter-spacing:1.2px;color:#786b65}
+  .secret{font-size:22px;font-weight:800;letter-spacing:1px;color:#8f1732;word-break:break-all;margin-top:4px}
+  .pin{font-size:28px;letter-spacing:5px}
+  .copy{margin-top:8px;border:1px solid #d8a43a;background:white;border-radius:10px;padding:8px 12px;cursor:pointer}
+  .footer{font-size:12px;color:#786b65;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="hero">
+    <div class="small">A SPECIAL SURPRISE</div>
+    <h1>RAKHI</h1>
+    <div class="tag">A LITTLE GIFT • WITH LOTS OF LOVE</div>
+    <div class="rakhi">✦</div>
+  </div>
+  <div class="content">
+    <div class="for">For You ❤️</div>
+    <div class="msg">Your Rakhi Gift Card is waiting!</div>
+
+    <button class="reveal-btn" id="reveal">🎁 TAP TO REVEAL GIFT CARD</button>
+    <div class="hint">Tap once to reveal the gift card details.</div>
+
+    <div class="details" id="details">
+      <div class="row">
+        <div class="label">Flipkart e-Gift Card Code</div>
+        <div class="secret" id="code">6000170575545798</div>
+        <button class="copy" onclick="copyText('code')">Copy code</button>
+      </div>
+      <div class="row">
+        <div class="label">PIN</div>
+        <div class="secret pin" id="pin">226134</div>
+        <button class="copy" onclick="copyText('pin')">Copy PIN</button>
+      </div>
+      <div class="row">
+        <div class="label">Face Value</div>
+        <div class="secret">₹1,000</div>
+      </div>
+      <div class="row">
+        <div class="label">Expiry</div>
+        <div class="secret">27 Aug 2027</div>
+      </div>
+    </div>
+
+    <div class="footer">Flipkart e-Gift Card • Rakhi surprise</div>
+  </div>
+</div>
+<script>
+const btn=document.getElementById('reveal');
+const details=document.getElementById('details');
+btn.addEventListener('click',()=>{
+  const open=details.classList.toggle('show');
+  btn.textContent=open ? '🙈 HIDE GIFT CARD DETAILS' : '🎁 TAP TO REVEAL GIFT CARD';
+});
+function copyText(id){
+  const text=document.getElementById(id).textContent;
+  navigator.clipboard?.writeText(text).then(()=>alert('Copied!')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);
+    ta.select();document.execCommand('copy');ta.remove();alert('Copied!');
+  });
+}
+</script>
+</body>
+</html>
